@@ -1,12 +1,20 @@
 CREATE TABLE users (
-    id INT(10) unsigned NOT NULL AUTO_INCREMENT,
+    userID INT(10) NOT NULL AUTO_INCREMENT,
     user VARCHAR(45) NOT NULL,
     password VARCHAR(255) NOT NULL,
     name VARCHAR(200) NOT NULL,
     lastName VARCHAR(200) NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (userID),
     UNIQUE KEY user (user)
 ) ENGINE = InnoDB;
+
+CREATE TABLE pets ( 
+    petID INT(10) NOT NULL AUTO_INCREMENT,
+    userID INT(10) NOT NULL,
+    breed VARCHAR(45) NOT NULL,
+    PRIMARY KEY (petID),
+    FOREIGN KEY (userID) REFERENCES users(userID)
+)
 
 -- Insert an user: name of the user: example - password: 1234 (encripted)
 INSERT INTO
