@@ -12,6 +12,7 @@ CREATE TABLE pets (
     petID INT(10) NOT NULL AUTO_INCREMENT,
     userID INT(10) NOT NULL,
     breed VARCHAR(45) NOT NULL,
+    petName VARCHAR(45) NOT NULL,
     PRIMARY KEY (petID),
     FOREIGN KEY (userID) REFERENCES users(userID)
 )
