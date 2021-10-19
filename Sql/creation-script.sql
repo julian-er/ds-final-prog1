@@ -30,11 +30,12 @@ VALUES
 
 -- Insert a pet : userId and breed of dog
 INSERT INTO 
-    pets (userID, breed)
+    pets (userID, breed, petName)
 VALUES
     (
      1,
-     'Pastor Alemán'   
+     'Pastor Alemán',
+     'Pipa'   
     )
 
 -- Select all dogs of userID
