@@ -26,3 +26,15 @@ VALUES
         'Test',
         'User'
     );
+
+-- Insert a pet : userId and breed of dog
+INSERT INTO 
+    pets (userID, breed)
+VALUES
+    (
+     1,
+     'Pastor Alemán'   
+    )
+
+-- Select all dogs of userID
+SELECT * FROM `pets` WHERE userID = 1
