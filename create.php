@@ -23,10 +23,10 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
     </head>
     <body class="container">
       <div class="jumbotron text-center">
-      <h1>Your Wallet</h1>
+      <h1>New User</h1>
       </div>    
       <div class="text-center">
-        <h3>Check your pets!</h3>
+        <h3>Please Complete the inputs to create a new user</h3>
         <?php
             if (isset($_GET['message'])) {
                 echo '<div id="message" class="alert alert-primary text-center">
@@ -40,7 +40,9 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
             <input name="name" class="form-control form-control-lg" placeholder="Your Name" required><br>
             <input name="lastName" class="form-control form-control-lg" placeholder="Last Name"><br>
             <input type="submit" value="Register" class="btn btn-primary">
-        </form>        
+        </form>  
+        
+        <p><a href="index.php">Back to Login</a></p>
       </div> 
     </body>
 </html>

@@ -54,7 +54,9 @@ if (isset($_POST['breed']) && isset($_POST['petName'])) {
             <input name="petName" class="form-control form-control-lg" placeholder="Your Pet Name" required><br>
             <input name="breed" class="form-control form-control-lg" placeholder="Your Pet Breed" required><br>
             <input type="submit" value="Add" class="btn btn-primary">
-        </form>        
+        </form>   
+        
+        <p><a href="home.php">Back to Home</a></p>
       </div> 
     </body>
 </html>
