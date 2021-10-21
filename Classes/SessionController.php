@@ -1,6 +1,8 @@
 <?php
 require_once 'User.php';
+require_once 'Pet.php';
 require_once 'UserRepository.php';
+require_once 'PetRepository.php';
 
 class SessionController
 {
@@ -33,6 +35,20 @@ class SessionController
             session_start();
             $_SESSION['user'] = serialize($user);
             return [ true, "User created" ];
+        }
+    }
+
+    public function createPet($ownerID, $name, $breed)
+    {
+        $repo = new PetRepository();
+        $pet = new Pet($ownerID, $name, $breed);
+        $id = $repo->save($pet);
+        if ($id === false) {
+            return [ false, "Error on creation"];
+        }
+        else {
+            $pet->setId($id);
+            return [ true, $pet->getName() ." the " . $pet->getBreed() . " Pet created" ];
         }
     }
 }
