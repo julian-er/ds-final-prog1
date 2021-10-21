@@ -35,9 +35,9 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
         ?>
 
         <form action="create.php" method="post">
-            <input name="user" class="form-control form-control-lg" placeholder="User Name"><br>
-            <input name="password" type="password" class="form-control form-control-lg" placeholder="Password"><br>
-            <input name="name" class="form-control form-control-lg" placeholder="Your Name"><br>
+            <input name="user" class="form-control form-control-lg" placeholder="User Name" required><br>
+            <input name="password" type="password" class="form-control form-control-lg" placeholder="Password" required><br>
+            <input name="name" class="form-control form-control-lg" placeholder="Your Name" required><br>
             <input name="lastName" class="form-control form-control-lg" placeholder="Last Name"><br>
             <input type="submit" value="Register" class="btn btn-primary">
         </form>        

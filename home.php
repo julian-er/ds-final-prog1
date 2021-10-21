@@ -18,10 +18,13 @@ if (isset($_SESSION['user'])) {
     </head>
     <body class="container">
       <div class="jumbotron text-center">
-      <h1>Check your wallet!</h1>
+      <h1>Member Dashboard!</h1>
       </div>    
       <div class="text-center">
         <h3>Wellcome <?php echo $nomApe;?></h3>
+        <p>What do you want to do today? </p>
+        <p><a href="create-pet.php">Add new pet</a></p>
+        <p><a href="view-pet.php">View my pets</a></p>
         <p><a href="logout.php">Logout</a></p>
       </div> 
     </body>
