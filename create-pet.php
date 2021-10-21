@@ -14,17 +14,15 @@ if (isset($_SESSION['user'])) {
 
 require_once 'Classes/SessionController.php';
 if (isset($_POST['breed']) && isset($_POST['petName'])) {
-    console_log('seteado?');
-    console_log(isset($_POST['breed']));
-    // $cs = new SessionController();
-    // $result = $cs->createPet($_POST['userID'], $_POST['petName'],  $_POST['breed']);
-    // if( $result[0] === true ) {
-    //     $redirigir = 'create-pet.php?message='.$result[1];
-    // }
-    // else {
-    //     $redirigir = 'create-pet.php?message='.$result[1];
-    // }
-    // header('Location: ' . $redirigir);
+    $cs = new SessionController();
+    $result = $cs->createPet($_POST['userID'], $_POST['petName'],  $_POST['breed']);
+    if( $result[0] === true ) {
+        $redirigir = 'create-pet.php?message='.$result[1];
+    }
+    else {
+        $redirigir = 'create-pet.php?message='.$result[1];
+    }
+    header('Location: ' . $redirigir);
 }
 
 ?>
