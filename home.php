@@ -3,7 +3,7 @@ require_once 'Classes/user.php';
 session_start();
 if (isset($_SESSION['user'])) {
     $user = unserialize($_SESSION['user']);
-    $nomApe = $user->getNombreApellido();
+    $nomApe = $user->getNameLastName();
 } else {
     header('Location: index.php');
 }
