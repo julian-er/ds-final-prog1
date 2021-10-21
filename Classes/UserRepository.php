@@ -65,48 +65,4 @@ class UserRepository
         }
     }
 
-    public function getPets($id)
-    {
-        $q = "SELECT * FROM pets ";
-        $q .= "WHERE userID = ?";
-        $query = self::$conexion->prepare($q);
-
-        $query->bind_param("s", $id);
-
-        /* fetch value */
-
-
-        if ($query->execute()) {
-  
-            //this option don't accept * in select
-            // $query->store_result();
-
-            // $query->bind_result($petName);
-
-            // $pets = array(); 
-
-            // while ($query->fetch()) {
-            //     array_push($pets, $petName);
-            // };
-
-            // return $pets;
-
-
-            $result = $query->get_result();
-
-            /* Get the number of rows */
-            $num_of_rows = $result->num_rows;
-         
-            $pets = array();
-         
-         
-            while ($row = $result->fetch_assoc()){ 
-                array_push($pets, new Pet($row['userID'], $row['petName'], $row['breed']));
-            }
-            return $pets;
-
-        } else {
-            return false;
-        }
-    }
 }

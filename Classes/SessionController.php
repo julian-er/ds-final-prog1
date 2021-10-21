@@ -54,7 +54,7 @@ class SessionController
 
     public function viewPets($ownerID)
     {
-        $repo = new UserRepository();
+        $repo = new PetRepository();
         
         $pets = $repo->getPets($ownerID);
         if ($pets === false) {
