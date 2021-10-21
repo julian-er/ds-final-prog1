@@ -51,4 +51,17 @@ class SessionController
             return [ true, $pet->getName() ." the " . $pet->getBreed() . " Pet created" ];
         }
     }
+
+    public function viewPets($ownerID)
+    {
+        $repo = new UserRepository();
+        
+        $pets = $repo->getPets($ownerID);
+        if ($pets === false) {
+            return [ false, "Error on creation"];
+        }
+        else {
+            return $pets;
+        }
+    }
 }

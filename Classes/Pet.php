@@ -1,10 +1,10 @@
 <?php
 class Pet
 {
-    protected $id;
-    protected $ownerID;
-    protected $name;
-    protected $breed;
+    public $id;
+    public $ownerID;
+    public $name;
+    public $breed;
 
     public function __construct($ownerID, $name, $breed, $id = null)
     {
