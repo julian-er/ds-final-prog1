@@ -55,7 +55,7 @@ class PetRepository
         $query->bind_param("s", $ownerID);
 
         if ($query->execute()) {
-           
+
             $result = $query->get_result();
             $pets = array();
 
@@ -77,6 +77,23 @@ class PetRepository
 
         if ($query->execute()) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function howManyPets($userId)
+    {
+        $q = "SELECT COUNT(p.petID) from pets p inner join users u on p.userID = u.userID ";
+        $q .= "WHERE u.userID = ?";
+        $query = self::$conexion->prepare($q);
+        $query->bind_param("s", $userId);
+
+        if ($query->execute()) {
+            $query->store_result();
+            $query->bind_result($number);
+            $query->fetch();
+            return $number;
         } else {
             return false;
         }

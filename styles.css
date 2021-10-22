@@ -1,0 +1,17 @@
+.petCard{
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 30px;
+    border-radius: 6px;
+}
+
+.petCard >p {
+    margin: 0;
+}
+
+.petCard + .petCard{
+    margin-top: 30px;
+}

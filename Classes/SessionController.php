@@ -79,4 +79,17 @@ class SessionController
         }
     }
 
+    public function totalPets($userID)
+    {
+        $repo = new PetRepository();
+        
+        $pets = $repo->howManyPets($userID);
+        if ($pets === false) {
+            return [ false, "Error on counting"];
+        }
+        else {
+            return $pets;
+        }
+    }
+
 }
