@@ -11,13 +11,6 @@ if (isset($_SESSION['user'])) {
 }
 
 
-function console_log( $data ){
-    echo '<script>';
-    echo 'console.log('. json_encode( $data ) .')';
-    echo '</script>';
-  }
-
-
 require_once 'Classes/SessionController.php';
 $cs = new SessionController();
 

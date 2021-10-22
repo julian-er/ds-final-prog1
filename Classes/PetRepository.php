@@ -70,8 +70,8 @@ class PetRepository
 
     public function deletePet($petId)
     {
-        $q = "DELETE FROM `pets`";
-        $q .= "WHERE userID = ?";
+        $q = "DELETE FROM pets ";
+        $q .= "WHERE petID = ?";
         $query = self::$conexion->prepare($q);
         $query->bind_param("s", $petId);
 

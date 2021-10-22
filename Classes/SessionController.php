@@ -75,7 +75,7 @@ class SessionController
             return [ false, "Error on delete"];
         }
         else {
-            return "Your pet has been removed";
+            return "Your pet has been deleted correctly";
         }
     }
 

@@ -59,8 +59,14 @@ if (isset($_POST['petID'])) {
     const deletePet = new XMLHttpRequest();
 
     deletePet.onload = function () {
-      document.getElementById("pets").innerHTML =   '<p> Deleting pet </p>'
-      console.log('response', this.responseText)
+      document.getElementById("pets").innerHTML =   `<div id="message" class="alert alert-primary text-center">
+              <p>Deleting your pet, please wait...</p>
+          </div>`
+       setTimeout(() => {
+        document.getElementById("pets").innerHTML = `<div id="message" class="alert alert-primary text-center">
+              <p>${this.responseText}</p>
+          </div>`
+       }, 2000);
     }
 
     deletePet.open("GET", "delete-pet.php?petID="+petID);
@@ -77,7 +83,6 @@ if (isset($_POST['petID'])) {
       const myObj = JSON.parse(this.responseText);
       let html = `<p id="prep">These are your pets: </p> <p> You can delete some or just see the info </p>`; 
       myObj.forEach(pet => {
-        console.log(pet)
         html += `<p>${pet.name}</p>
                       <button class="btn btn-primary" onclick=deletePet(${pet.id})>Delete Pet</button>
                   <br>`
