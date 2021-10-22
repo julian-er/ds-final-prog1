@@ -42,10 +42,11 @@ VALUES
 SELECT * FROM `pets` WHERE userID = 1
 
 -- Count pets for all users 
-SELECT u.userID, COUNT(p.petID)
+SELECT COUNT(p.petID)
 from pets p
 inner join users u 
 on p.userID = u.userID
+WHERE u.userID = 1
 
 
 -- Delete pet 
