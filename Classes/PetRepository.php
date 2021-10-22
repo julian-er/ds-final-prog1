@@ -47,12 +47,12 @@ class PetRepository
         }
     }
 
-    public function getPets($id)
+    public function getPets($ownerID)
     {
         $q = "SELECT * FROM pets ";
         $q .= "WHERE userID = ?";
         $query = self::$conexion->prepare($q);
-        $query->bind_param("s", $id);
+        $query->bind_param("s", $ownerID);
 
         if ($query->execute()) {
            
@@ -60,9 +60,23 @@ class PetRepository
             $pets = array();
 
             while ($row = $result->fetch_assoc()) {
-                array_push($pets, new Pet($row['userID'], $row['petName'], $row['breed']));
+                array_push($pets, new Pet($row['userID'], $row['petName'], $row['breed'], $row['petID']));
             }
             return $pets;
+        } else {
+            return false;
+        }
+    }
+
+    public function deletePet($petId)
+    {
+        $q = "DELETE FROM `pets`";
+        $q .= "WHERE userID = ?";
+        $query = self::$conexion->prepare($q);
+        $query->bind_param("s", $petId);
+
+        if ($query->execute()) {
+            return true;
         } else {
             return false;
         }

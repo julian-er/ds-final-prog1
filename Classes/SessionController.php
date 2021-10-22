@@ -58,10 +58,25 @@ class SessionController
         
         $pets = $repo->getPets($ownerID);
         if ($pets === false) {
-            return [ false, "Error on creation"];
+            return [ false, "Error on fetch"];
         }
         else {
             return $pets;
         }
     }
+
+
+    public function deletePet($petID)
+    {
+        $repo = new PetRepository();
+        
+        $pets = $repo->deletePet($petID);
+        if ($pets === false) {
+            return [ false, "Error on delete"];
+        }
+        else {
+            return "Your pet has been removed";
+        }
+    }
+
 }

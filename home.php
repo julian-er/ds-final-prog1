@@ -7,6 +7,20 @@ if (isset($_SESSION['user'])) {
 } else {
   header('Location: index.php');
 }
+
+// delete pet
+require_once 'Classes/SessionController.php';
+if (isset($_POST['petID'])) {
+    $cs = new SessionController();
+    $result = $cs->deletePet($_POST['petID']);
+    if( $result[0] === true ) {
+        $redirigir = 'home.php?message='.$result[1];
+    }
+    else {
+        $redirigir = 'home.php?message='.$result[1];
+    }
+    header('Location: ' . $redirigir);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,6 +53,20 @@ if (isset($_SESSION['user'])) {
   let viewPet = document.querySelector('#view-pet')
   window.onload = viewPet.addEventListener('click', checkPets);
 
+  
+  function deletePet(petID){
+
+    const deletePet = new XMLHttpRequest();
+
+    deletePet.onload = function () {
+      document.getElementById("pets").innerHTML =   '<p> Deleting pet </p>'
+      console.log('response', this.responseText)
+    }
+
+    deletePet.open("GET", "delete-pet.php?petID="+petID);
+    deletePet.send();
+  };
+
   function checkPets() {
     document.getElementById("pets").innerHTML = '<p>Loading your pets</p>';
 
@@ -47,15 +75,21 @@ if (isset($_SESSION['user'])) {
     fetchPets.onload = function() {
 
       const myObj = JSON.parse(this.responseText);
-      let html = `<p id="prep">Ther are your registered pets</p>`; 
+      let html = `<p id="prep">These are your pets: </p> <p> You can delete some or just see the info </p>`; 
       myObj.forEach(pet => {
-        html += `<p>${pet.name}</p>`
+        console.log(pet)
+        html += `<p>${pet.name}</p>
+                      <button class="btn btn-primary" onclick=deletePet(${pet.id})>Delete Pet</button>
+                  <br>`
       });
       document.getElementById("pets").innerHTML =   html
     }
+
     fetchPets.open("GET", "view-pet.php");
     fetchPets.send();
   }
+
+
 </script>
 
 </html>
